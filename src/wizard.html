@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SJ | 서류 생성</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand" onclick="location.href='index.html'" style="cursor:pointer;">
+          <span class="logo-circle">SJ</span>
+          <div><strong>Safe Jeonse</strong><p>AI 법률 비서</p></div>
+        </div>
+        <nav>
+          <a href="chat.html">AI 상담</a>
+          <a href="wizard.html" class="active" style="color:#2563eb; font-weight:700;">서류 생성</a>
+          <a href="timeline.html">절차 가이드</a>
+          <a href="resources.html">자료실</a>
+        </nav>
+        <button class="ghost-btn">카카오로 시작</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-padded container" style="background-color: #fafafa;">
+        <h2 class="section-title">📝 법적 서류 자동 생성</h2>
+        <p class="section-desc">빈칸만 채우면 변호사가 작성한 듯한 서류가 완성됩니다.</p>
+
+        <div class="wizard-steps">
+          <span class="step-item active">① 정보 입력</span>
+          <span class="step-item">② 내용 작성</span>
+          <span class="step-item">③ 검토 및 완성</span>
+        </div>
+
+        <div class="wizard-grid">
+          <div class="form-box">
+            <div class="form-group">
+              <label>서류 종류</label>
+              <select>
+                <option>내용증명 (계약해지 통보)</option>
+                <option>임차권등기명령 신청</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>임대인 성명</label>
+              <input type="text" placeholder="예: 홍길동">
+            </div>
+            <div class="form-group">
+              <label>보증금액 (원)</label>
+              <input type="text" placeholder="예: 300,000,000">
+            </div>
+            <button class="btn-primary-sm" style="width:100%; padding: 12px;">다음 단계로</button>
+          </div>
+
+          <div class="preview-box">
+            <h3 style="text-align: center; margin-bottom: 30px;">내 용 증 명 서</h3>
+            <p><strong>수신인:</strong> 홍길동</p>
+            <p><strong>발신인:</strong> 최보증</p>
+            <br>
+            <p><strong>제목: 임대차 계약 해지 및 보증금 반환 요청의 건</strong></p>
+            <br>
+            <p>1. 귀하의 무궁한 발전을 기원합니다.</p>
+            <p>2. 본인은 귀하 소유의 부동산에 대하여...</p>
+            <p style="color: #aaa;">(입력하신 정보에 따라 내용이 실시간으로 생성됩니다)</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><strong>SJ Legal Lab</strong><p>© 2025 Safe Jeonse</p></div>
+      </div>
+    </footer>
+  </body>
+</html>

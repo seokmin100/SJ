@@ -403,3 +403,36 @@ const init = () => {
 };
 
 document.addEventListener("DOMContentLoaded", init);
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement; // <html> 태그
+    const savedTheme = localStorage.getItem('theme');
+
+    // 1. 저장된 테마가 있으면 적용, 없으면 시스템 설정 따름
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+    } else {
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (systemPrefersDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            updateIcon('dark');
+        }
+    }
+
+    // 2. 버튼 클릭 이벤트
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); // 설정 저장
+        updateIcon(newTheme);
+    });
+
+    // 아이콘 변경 함수
+    function updateIcon(theme) {
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+});

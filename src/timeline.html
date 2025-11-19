@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SJ | 절차 가이드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand" onclick="location.href='index.html'" style="cursor:pointer;">
+          <span class="logo-circle">SJ</span>
+          <div><strong>Safe Jeonse</strong><p>AI 법률 비서</p></div>
+        </div>
+        <nav>
+          <a href="chat.html">AI 상담</a>
+          <a href="wizard.html">서류 생성</a>
+          <a href="timeline.html" class="active" style="color:#2563eb; font-weight:700;">절차 가이드</a>
+          <a href="resources.html">자료실</a>
+        </nav>
+        <button class="ghost-btn">카카오로 시작</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-padded container">
+        <h2 class="section-title">🗺️ 단계별 대응 가이드</h2>
+        <p class="section-desc">어디서부터 시작해야 할지 모르겠다면 이 순서대로 따라오세요.</p>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-step">
+            <div class="step-marker">
+              <div class="circle">✔</div>
+              <div class="line"></div>
+            </div>
+            <div class="step-content">
+              <h3>1. 증거 수집 및 상황 진단</h3>
+              <p>계약서, 이체 내역, 문자 내역 등 핵심 증거를 수집하고 AI 진단을 통해 대응 전략을 수립합니다.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step active">
+            <div class="step-marker">
+              <div class="circle">2</div>
+              <div class="line"></div>
+            </div>
+            <div class="step-content">
+              <h3 style="color: var(--primary-color);">2. 계약 해지 통보 (내용증명)</h3>
+              <p>가장 중요한 단계입니다. 계약 만료 의사를 확실히 밝혀야 묵시적 갱신을 막을 수 있습니다.</p>
+              <button class="btn-primary-sm" onclick="location.href='wizard.html'">내용증명 작성하기</button>
+            </div>
+          </div>
+
+          <div class="timeline-step">
+            <div class="step-marker">
+              <div class="circle">3</div>
+              <div class="line"></div>
+            </div>
+            <div class="step-content">
+              <h3>3. 임차권등기명령 신청</h3>
+              <p>보증금을 받지 못하고 이사를 가야 한다면 반드시 등기를 마쳐야 대항력이 유지됩니다.</p>
+            </div>
+          </div>
+
+           <div class="timeline-step">
+            <div class="step-marker">
+              <div class="circle">4</div>
+            </div>
+            <div class="step-content">
+              <h3>4. 반환 소송 및 경매</h3>
+              <p>지급명령 또는 전세금 반환 소송을 통해 집행 권원을 확보하고 강제 집행을 진행합니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><strong>SJ Legal Lab</strong><p>© 2025 Safe Jeonse</p></div>
+      </div>
+    </footer>
+  </body>
+</html>
