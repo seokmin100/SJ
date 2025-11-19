@@ -1,639 +1,555 @@
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 :root {
-  font-size: 16px;
-  --bg: #07090f;
-  --panel: #0f1422;
-  --panel-alt: #141b2f;
-  --border: rgba(255, 255, 255, 0.08);
-  --text: rgba(255, 255, 255, 0.92);
-  --text-muted: rgba(255, 255, 255, 0.65);
-  --primary: #65d8ff;
-  --primary-dark: #1e90ff;
-  --accent: #a67bff;
-  --success: #4ade80;
-  --danger: #f87171;
-  --gradient: linear-gradient(120deg, #1e90ff, #65d8ff, #a67bff);
+  --primary-color: #2563eb;       /* 메인 파란색 */
+  --primary-dark: #1e40af;        /* 진한 파란색 (호버용) */
+  --secondary-bg: #eff6ff;        /* 연한 파란 배경 */
+  --text-dark: #1e293b;           /* 진한 회색 (본문) */
+  --text-gray: #64748b;           /* 연한 회색 (설명) */
+  --border-color: #e2e8f0;        /* 테두리 색상 */
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: "Pretendard", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, rgba(101, 216, 255, 0.2), transparent 50%), var(--bg);
-  color: var(--text);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  color: var(--text-dark);
   line-height: 1.6;
-  min-height: 100vh;
+  background-color: var(--white);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button { font-family: inherit; }
 
-a {
-  color: var(--text);
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-button,
-input,
-textarea {
-  font-family: inherit;
-}
-
+/* 컨테이너 (중앙 정렬 및 최대 너비) */
 .container {
-  width: min(1200px, 90vw);
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
-header.site-header {
+/* 섹션 공통 여백 */
+.section-padded {
+  padding: 80px 0;
+}
+
+/* 섹션 제목 공통 스타일 */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.section-desc {
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+}
+
+
+/* =========================================
+   2. 헤더 (Header)
+   ========================================= */
+.site-header {
+  height: 70px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
   position: sticky;
   top: 0;
-  z-index: 10;
-  backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-  background: rgba(7, 9, 15, 0.65);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .site-header .container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
-  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-}
-
-.brand p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  gap: 10px;
+  cursor: pointer;
 }
 
 .logo-circle {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
   border-radius: 50%;
-  background: var(--gradient);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 1.2rem;
 }
+
+.brand div strong { display: block; font-size: 1.1rem; line-height: 1.2; }
+.brand div p { font-size: 0.75rem; color: var(--text-gray); margin: 0; }
 
 nav {
   display: flex;
-  gap: 1rem;
-  font-size: 0.95rem;
+  gap: 30px;
 }
 
 nav a {
-  padding: 0.35rem 0.65rem;
-  border-radius: 999px;
-  transition: background 0.2s;
+  font-weight: 500;
+  color: var(--text-gray);
+  transition: color 0.2s;
 }
 
-nav a:hover {
-  background: rgba(255, 255, 255, 0.08);
+nav a:hover, nav a.active {
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
-main {
-  padding: 4rem 0 6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+.ghost-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
 }
+.ghost-btn:hover { background-color: #f8fafc; }
 
+
+/* =========================================
+   3. 버튼 (Buttons)
+   ========================================= */
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.primary-btn:hover { background-color: var(--primary-dark); }
+
+.secondary-btn {
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.secondary-btn:hover { background-color: var(--secondary-bg); }
+
+/* 작은 버튼 */
+.btn-primary-sm {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary-sm:hover { background-color: var(--primary-dark); }
+
+
+/* =========================================
+   4. 메인 홈 (Hero Section - index.html)
+   ========================================= */
 .hero {
   display: grid;
-  gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.eyebrow {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: 3rem;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 24px;
+  color: var(--text-dark);
 }
 
-.lead {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  max-width: 520px;
+.hero .lead {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  margin-bottom: 40px;
+  max-width: 480px;
 }
 
-.hero-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 2rem;
+.hero-actions {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 20px 60px rgba(10, 14, 24, 0.45);
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+}
+.hero-stats li { display: flex; flex-direction: column; }
+.hero-stats strong { font-size: 1.8rem; color: var(--text-dark); }
+.hero-stats span { font-size: 0.9rem; color: var(--text-gray); }
+
+/* Hero 우측 카드 */
+.hero-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
 }
 
 .card-title {
-  opacity: 0.9;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-gray);
+  font-size: 0.9rem;
 }
 
 .status-row {
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .status-pill {
   font-size: 0.85rem;
-  padding: 0.2rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
 }
-
 .status-pill.in-progress {
-  background: rgba(101, 216, 255, 0.15);
-  border-color: rgba(101, 216, 255, 0.4);
+  background-color: #fff7ed;
+  color: #c2410c;
 }
 
 .status-steps {
-  padding-left: 1rem;
-  margin: 0;
-  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 16px;
+  margin-bottom: 30px;
 }
-
 .status-steps li {
-  opacity: 0.7;
+  color: var(--text-gray);
+  font-size: 1rem;
+}
+.status-steps li.done { text-decoration: line-through; opacity: 0.6; }
+.status-steps li.active { color: var(--primary-color); font-weight: 700; }
+
+.card-note {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  text-align: center;
+  background: var(--secondary-bg);
+  padding: 10px;
+  border-radius: 8px;
 }
 
-.status-steps li.done {
-  color: var(--success);
-  opacity: 1;
-}
-
-.status-steps li.active {
-  color: var(--primary);
-  opacity: 1;
-}
-
-.hero-stats {
+/* CTA 배너 */
+.cta-banner {
+  background-color: var(--text-dark);
+  color: white;
+  border-radius: 20px;
+  padding: 60px;
   display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0;
-  flex-wrap: wrap;
-}
-
-.hero-stats strong {
-  display: block;
-  font-size: 1.8rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.eyebrow {
-  letter-spacing: 0.25rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 0.8rem;
-}
-
-.panel {
-  background: var(--panel);
-  border-radius: 32px;
-  border: 1px solid var(--border);
-  padding: 2.5rem;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-}
-
-.panel-header {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.cta-banner h2 { font-size: 1.8rem; margin-bottom: 10px; }
+.cta-banner p { color: #94a3b8; }
+
+
+/* =========================================
+   5. AI 상담 페이지 (chat.html)
+   ========================================= */
+.chat-container {
+  display: flex;
+  height: 600px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
 }
 
-.helper-text {
-  color: var(--text-muted);
-  margin: 0;
+.chat-sidebar {
+  width: 300px;
+  background: #f8fafc;
+  padding: 24px;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.primary-btn,
-.secondary-btn,
-.ghost-btn,
-.text-btn {
-  border: none;
-  border-radius: 999px;
-  padding: 0.85rem 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, opacity 0.2s;
+.info-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
 }
+.info-card h4 { margin: 0 0 10px 0; font-size: 1rem; color: var(--primary-color); }
+.info-card p { font-size: 0.9rem; margin: 4px 0; color: var(--text-dark); }
 
-.primary-btn {
-  background: var(--gradient);
-  color: #05060a;
-}
-
-.secondary-btn {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-}
-
-.ghost-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-.text-btn {
-  background: none;
-  padding: 0;
-  color: var(--primary);
-}
-
-.primary-btn:hover,
-.secondary-btn:hover,
-.ghost-btn:hover {
-  transform: translateY(-2px);
-}
-
-.chat-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
-  gap: 1.5rem;
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-window {
-  min-height: 320px;
-  max-height: 420px;
+  flex: 1;
+  padding: 24px;
   overflow-y: auto;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 1.5rem;
+  background: white;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  background: var(--panel-alt);
+  gap: 16px;
 }
 
 .message {
   max-width: 80%;
-  border-radius: 20px;
-  padding: 0.9rem 1.1rem;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 0.95rem;
   line-height: 1.5;
-  position: relative;
-  word-break: keep-all;
 }
 
-.message.bot {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
+.msg-ai {
+  background-color: #f1f5f9;
+  color: var(--text-dark);
+  border-top-left-radius: 2px;
+  align-self: flex-start;
 }
 
-.message.user {
-  background: rgba(101, 216, 255, 0.15);
+.msg-user {
+  background-color: var(--primary-color);
+  color: white;
+  border-top-right-radius: 2px;
   align-self: flex-end;
 }
 
-.message time {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-}
-
-.chat-sidebar {
+.chat-input-box {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
+  background-color: white;
 }
 
-.sidebar-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 1.25rem;
-}
-
-.sidebar-card h3 {
-  margin-top: 0;
-}
-
-.sidebar-card dl {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.3rem 0.8rem;
-  margin: 1rem 0 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.checklist-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  font-size: 0.9rem;
-}
-
-.checklist-card li {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.checklist-card input {
-  accent-color: var(--primary);
-}
-
-.chat-input {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.chat-input input {
+.chat-input-box input {
   flex: 1;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  padding: 0.9rem 1.2rem;
-  color: var(--text);
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
 }
+.chat-input-box input:focus { border-color: var(--primary-color); }
 
-.chat-suggestions {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
 
-.suggestion-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.4rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.wizard {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+/* =========================================
+   6. 서류 생성 페이지 (wizard.html)
+   ========================================= */
 .wizard-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 50px;
 }
 
-.wizard-steps li {
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  padding: 0.9rem 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  font-size: 0.9rem;
+.step-item {
+  position: relative;
+  color: var(--text-gray);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.step-item.active { color: var(--primary-color); font-weight: 700; }
+
+.wizard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.form-box {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark); }
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+.form-group input:focus, .form-group select:focus { border-color: var(--primary-color); }
+
+.preview-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  font-family: 'Batang', serif; /* 명조체 느낌 */
+  min-height: 500px;
+}
+
+
+/* =========================================
+   7. 절차 가이드 페이지 (timeline.html)
+   ========================================= */
+.timeline-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 0; /* line 연결을 위해 */
   position: relative;
 }
 
-.wizard-steps li.active {
-  border-color: var(--primary);
-  background: rgba(101, 216, 255, 0.08);
-}
-
-.wizard-body {
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  background: var(--panel-alt);
-  display: grid;
-  gap: 1rem;
-}
-
-.form-field {
+.step-marker {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  align-items: center;
+  width: 40px;
+  flex-shrink: 0;
 }
 
-.form-field label {
-  font-weight: 600;
-}
-
-.form-field input,
-.form-field textarea,
-.form-field select {
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.02);
-  padding: 0.85rem 1rem;
-  color: var(--text);
-  font-size: 1rem;
-}
-
-.wizard-actions {
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border-color);
+  color: var(--text-gray);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 2;
 }
 
-.wizard-progress {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+.timeline-step.active .circle {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 0 4px var(--secondary-bg);
 }
 
-progress {
-  width: 220px;
-  height: 6px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
+.line {
+  flex: 1;
+  width: 2px;
+  background: var(--border-color);
+  min-height: 80px; /* 최소 높이 */
+}
+.timeline-step:last-child .line { display: none; }
+
+.step-content {
+  flex: 1;
+  padding-bottom: 50px;
 }
 
-progress::-webkit-progress-bar {
-  background: rgba(255, 255, 255, 0.1);
-}
+.step-content h3 { margin: 0 0 10px 0; font-size: 1.2rem; color: var(--text-dark); }
+.step-content p { color: var(--text-gray); margin-bottom: 15px; line-height: 1.6; }
 
-progress::-webkit-progress-value {
-  background: var(--gradient);
-}
 
-.preview-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
-  gap: 1.5rem;
-}
-
-.doc-preview {
-  border-radius: 32px;
-  border: 1px solid var(--border);
-  background: #f9f7f3;
-  color: #1a1a1a;
-  padding: 2rem;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.08);
-  min-height: 420px;
-  overflow-y: auto;
-  font-family: "Pretendard", serif;
-}
-
-.doc-preview h3 {
-  margin-top: 0;
-  color: #111;
-}
-
-.doc-meta {
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.doc-meta ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.doc-meta li {
-  display: flex;
-  justify-content: space-between;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.timeline {
-  display: grid;
-  gap: 1rem;
-}
-
-.timeline-card {
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  padding: 1.25rem 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  display: grid;
-  gap: 0.5rem;
-}
-
-.timeline-card header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-}
-
-.timeline-card p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.94rem;
-}
-
-.timeline-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.timeline-card li {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 999px;
-  padding: 0.35rem 0.8rem;
-  font-size: 0.85rem;
-}
-
-.timeline-hint {
-  margin-top: 1rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
+/* =========================================
+   8. 자료실 페이지 (resources.html)
+   ========================================= */
 .resource-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .resource-card {
-  border-radius: 24px;
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.resource-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
 }
 
-.cta-banner {
-  border-radius: 32px;
-  border: 1px solid var(--border);
-  padding: 2rem 2.5rem;
-  background: linear-gradient(135deg, rgba(101, 216, 255, 0.12), rgba(166, 123, 255, 0.12));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+.resource-card h4 { margin: 0 0 10px 0; color: var(--text-dark); font-size: 1.1rem; }
+.resource-card p { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 20px; line-height: 1.5; }
+
+.tag {
+  font-size: 0.8rem;
+  background: var(--secondary-bg);
+  color: var(--primary-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
 }
 
-.cta-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
 
+/* =========================================
+   9. 푸터 (Footer)
+   ========================================= */
 .site-footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem 0 3rem;
-  background: rgba(7, 9, 15, 0.8);
+  border-top: 1px solid var(--border-color);
+  padding: 60px 0;
+  margin-top: 60px;
+  background-color: #f9fafb;
 }
 
 .footer-grid {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .footer-grid ul {
@@ -672,9 +588,9 @@ progress::-webkit-progress-value {
     align-items: flex-start;
   }
 }
-=======
+=========
 /* =========================================
-   1. 테마 설정 및 변수 (Theme Variables)
+   10. 반응형 (Mobile)
    ========================================= */
 :root {
   /* ☀️ 라이트 모드 (기본) */
@@ -904,4 +820,4 @@ nav a:hover, nav a.active { color: var(--primary-color); font-weight: 700; }
 .site-footer { border-top: 1px solid var(--border-color); padding: 60px 0; margin-top: 60px; background-color: var(--bg-secondary); }
 .footer-grid strong { color: var(--text-main); }
 .footer-grid p, .footer-grid li { color: var(--text-sub); }
->>>>>>> d2c46eac2052491288afa8ac243d1e07056b90c9
+>>>>>>>>> Temporary merge branch 2
